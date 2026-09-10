@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Jardim Viver</string>
+    <string name="screen_title">Cadastro de responsáveis</string>
+    <string name="screen_subtitle">Registre os dados dos pais ou responsáveis dos alunos.</string>
+    <string name="nome">Nome</string>
+    <string name="sobrenome">Sobrenome</string>
+    <string name="email">E-mail</string>
+    <string name="idade">Idade</string>
+    <string name="endereco">Endereço</string>
+    <string name="salvar">Salvar cadastro</string>
+    <string name="atualizar">Atualizar cadastro</string>
+    <string name="cancelar">Cancelar edição</string>
+    <string name="lista_titulo">Responsáveis cadastrados</string>
+    <string name="lista_vazia">Nenhum responsável cadastrado.</string>
+    <string name="editar">Editar</string>
+    <string name="excluir">Excluir</string>
+</resources>
