@@ -1,69 +1,51 @@
-# Jardim Viver - Cadastro de Responsáveis
+# Jardim Viver — Android Registration App
 
-Projeto acadêmico da Ação de Aprendizagem 2 da disciplina **Programação para Dispositivos Móveis**.
+An academic Android project for managing parents' and guardians' registration details. Built as part of a mobile development course, it demonstrates form validation, local persistence, and basic CRUD operations in Java.
 
-## Objetivo
+## Features
 
-Implementar um aplicativo Android com formulário para cadastrar dados dos pais/responsáveis dos alunos da escola Jardim Viver. Os dados solicitados são:
+- Register a guardian's first name, last name, email, age, and address.
+- Validate required fields, email format, and age range.
+- Store records locally using SQLite.
+- Display entries with Android's `RecyclerView`.
+- Edit and delete existing records.
 
-- Nome
-- Sobrenome
-- E-mail
-- Idade
-- Endereço
+## Technology
 
-A aplicação relaciona a interface com um DTO (`ResponsavelDTO`) e persiste os dados localmente em SQLite por meio de `DatabaseHelper`.
+- **Language:** Java 17
+- **Platform:** Android (minimum API 24, target SDK 34)
+- **Interface:** AndroidX and Material Components
+- **Persistence:** SQLite via `SQLiteOpenHelper`
+- **Build:** Gradle; GitHub Actions workflow available for debug APK builds
 
-## Funcionalidades
+## Project structure
 
-- Cadastro de responsável
-- Validação de campos obrigatórios
-- Validação de e-mail e idade
-- Persistência local SQLite
-- Listagem dos registros em RecyclerView
-- Edição de cadastro
-- Exclusão de cadastro
+```text
+app/src/main/java/br/com/techz/jardimviver/
+├── MainActivity.java           Form interactions and CRUD flow
+├── data/DatabaseHelper.java    SQLite persistence
+├── model/ResponsavelDTO.java   Guardian data model
+└── ui/ResponsavelAdapter.java  RecyclerView list adapter
 
-## Tecnologias e configuração
+app/src/main/res/layout/
+├── activity_main.xml           Registration form
+└── item_responsavel.xml        List entry
+```
 
-- Java 17
-- Android SDK 34
-- minSdk 24
-- AndroidX
-- Material Components
-- SQLite (`SQLiteOpenHelper`)
+## Run in Android Studio
 
-## Como executar no Android Studio
+1. Install Android Studio, JDK 17, and Android SDK 34.
+2. Clone the repository and open its root directory in Android Studio.
+3. Let Gradle sync the project. If required, configure a compatible Gradle 8.7 wrapper.
+4. Start an Android emulator (API 24+) or connect an Android device.
+5. Run the `app` configuration.
 
-1. Instale uma versão recente do Android Studio com JDK 17.
-2. Abra o Android Studio e selecione **Open**.
-3. Selecione a pasta `JardimViverCadastro`.
-4. Aguarde a sincronização das dependências do Gradle.
-5. Caso o Android Studio informe que não encontrou o Gradle Wrapper, selecione a opção para usar/gerar um wrapper compatível com Gradle 8.7. O arquivo `gradle/wrapper/gradle-wrapper.properties` já contém a versão prevista para o projeto.
-6. Confirme que o Android SDK 34 está instalado pelo SDK Manager.
-7. Crie um emulador Android (API 24 ou superior) ou conecte um aparelho com depuração USB.
-8. Execute o módulo `app` pelo botão **Run**.
+`local.properties` is intentionally excluded because the Android SDK path differs across machines.
 
-> Observação: o arquivo `local.properties` não acompanha o projeto porque contém o caminho local do Android SDK de cada computador. O Android Studio normalmente cria esse arquivo automaticamente.
+## Build using GitHub Actions
 
-## Principais arquivos exigidos pela atividade
+The workflow at `.github/workflows/build-apk.yml` configures the Android build environment and produces a debug APK artifact. See [the build guide (Portuguese)](COMO_GERAR_APK_NO_GITHUB.md) for instructions.
 
-- `app/src/main/java/br/com/techz/jardimviver/model/ResponsavelDTO.java`: classe DTO com os atributos do formulário.
-- `app/src/main/java/br/com/techz/jardimviver/MainActivity.java`: contém o método `onCreate()` e a inicialização dos campos da tela.
-- `app/src/main/java/br/com/techz/jardimviver/data/DatabaseHelper.java`: persistência SQLite.
-- `app/src/main/res/layout/activity_main.xml`: desenho da interface principal.
-- `app/src/main/res/layout/item_responsavel.xml`: item da listagem.
+## Scope
 
-## Dados sugeridos para demonstração
-
-Nome: Ana
-Sobrenome: Souza
-E-mail: ana.souza@email.com
-Idade: 38
-Endereço: Rua das Flores, 120
-
-## Compilar sem Android Studio (GitHub Actions)
-
-Para computadores sem Android Studio/Android SDK, o projeto inclui o workflow `.github/workflows/build-apk.yml`.
-
-Consulte `COMO_GERAR_APK_NO_GITHUB.md` para o passo a passo. O workflow configura Java 17, Android SDK 34 e Gradle 8.7 e disponibiliza `app-debug.apk` como artefato da execução.
+This is a **course assignment**, not a production student-management system. Records are stored locally on the Android device; the application does not implement a remote API or multi-user cloud synchronization.
